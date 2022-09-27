@@ -1,0 +1,96 @@
+﻿@page
+@model SinusSkateboards.UI.Pages.Admin.OrderDetailsModel
+@{
+}
+
+<a asp-page="/Admin/Orders">Back to orders</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order.Products[0].ProductID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order.Products[0].Product.Title)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Order.Products[0].Product.Color.ColorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order.Products[0].Quantity)
+            </th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var product in Model.Order.Products)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => product.ProductID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => product.Product.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => product.Product.Color.ColorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => product.Quantity)
+            </td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order.User.Adress)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Order.User.PostalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order.User.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order.User.PhoneNumber)
+            </th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <tr>
+            <td>
+                @Model.Order.User.FirstName @Model.Order.User.SurName
+            </td>
+            <td>
+                @Model.Order.User.Adress
+            </td>
+            <td>
+                @Model.Order.User.PostalCode
+            </td>
+            <td>
+                @Model.Order.User.City
+            </td>
+            <td>
+                @Model.Order.User.PhoneNumber
+            </td>
+        </tr>
+
+    </tbody>
+</table>

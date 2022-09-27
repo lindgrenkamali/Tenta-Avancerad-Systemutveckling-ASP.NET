@@ -1,0 +1,22 @@
+﻿@using Newtonsoft.Json
+@using SinusSkateboards.UI.Models
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@*
+    
+*@
+@{
+
+    string cookie = HttpContextAccessor.HttpContext.Request.Cookies["Cart"];
+
+    if(!String.IsNullOrEmpty(cookie))
+    {
+        CartModel cart = JsonConvert.DeserializeObject<CartModel>(cookie);
+        ViewBag.CartQuantity = cart.ProductQuantity.Sum(x => x.Quantity);
+    }
+     
+
+    
+}
+
+@ViewBag.CartQuantity
+

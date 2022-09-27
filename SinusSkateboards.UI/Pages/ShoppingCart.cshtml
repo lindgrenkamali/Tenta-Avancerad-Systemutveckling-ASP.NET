@@ -1,0 +1,77 @@
+﻿@page
+@model SinusSkateboards.UI.Pages.ShoppingCartModel
+@{
+}
+
+
+@if(Model.Cart != null)
+            {
+
+            
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cart.ProductQuantity[0].Product)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cart.ProductQuantity[0].Quantity)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Cart.Price)
+            </th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var cart in Model.Cart.ProductQuantity)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => cart.Product.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => cart.Quantity)
+                </td>
+                <td>
+                    @(cart.Product.Price * cart.Quantity) sek
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+    <br />
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Summary
+                    </th>
+                <tr />
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Model.Cart.Price sek
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+
+    <a asp-page="/Checkout">
+    <input type="button" class="btn btn-primary" value="Checkout"/>
+    </a>
+}
+
+else
+	{
+<span class="align-middle">Your cart is empty!</span>
+	}

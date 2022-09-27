@@ -1,0 +1,76 @@
+﻿@page
+@model SinusSkateboards.UI.Pages.Admin.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+    <a asp-page="Create">Create new product</a>
+    <a asp-page="Orders" style="margin-left: 5px">Orders</a>
+    
+<form method="post" class="float-right"><button class="btn btn-primary">Logout</button></form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductModel[0].ProductID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductModel[0].Title)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductModel[0].Category.CategoryName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductModel[0].Color.ColorName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductModel[0].Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductModel[0].Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductModel[0].PhotoPath)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ProductModel)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Color.ColorName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price) sek
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhotoPath)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ProductID">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.ProductID">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.ProductID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

@@ -1,0 +1,58 @@
+﻿@page
+@model SinusSkateboards.UI.Pages.ProductSideModel
+
+@{
+    ViewData["Title"] = "ProductSide";
+}
+
+
+
+<div>
+    <img src="~/images/products/@Model.ProductModel.PhotoPath" class="img-thumbnail" style="display:block; margin-left:auto; max-height:400px; margin-right: auto"; />
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductModel.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductModel.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductModel.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductModel.Category.CategoryName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductModel.Color)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductModel.Color.ColorName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductModel.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductModel.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductModel.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductModel.Price) sek
+        </dd>
+
+    </dl>
+    <form method="post">
+        <input type="hidden" asp-for="@Model.ProductModel.ProductID" />
+        <button class="btn btn-success">Add to cart</button>
+        
+    </form>
+    <a asp-page="/Index" asp-route-category="@Model.ProductModel.CategoryID" asp-route-otherProducts="@Model.ProductModel.ProductID">
+    <input type="button" class="btn btn-primary" value="Other colors" style="margin-top:5px" />
+</a>
+ 
+</div>
+<div>
+    
+</div>

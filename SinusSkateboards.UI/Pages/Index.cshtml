@@ -1,0 +1,53 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<div class="background">
+<div class="float-left">
+    <h2 class="categories">Categories</h2>
+    @foreach (var category in Model.Categories)
+    {<div class="category">
+            <a asp-route-category="@category.CategoryID" asp-page="Index">@category.CategoryName</a>
+        </div>
+    }
+
+    <h2 class="colors">Colors</h2>
+    @foreach (var color in Model.Colors)
+    {
+        <div class="color">
+            <a asp-route-color="@color.ColorID" asp-page="Index">@color.ColorName</a>
+        </div>
+    }
+</div>
+
+<div class="float-right">
+    <form method="post">
+        <label id=searchlabel for="search">Search</label>
+        <input type="text" id="searchinput" asp-for="@Model.Search" />
+        <button class="btn btn-success" id="searchbutton">Search</button>
+    </form>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var product in Model.Products)
+        {
+        <div class="col-sm-4">
+
+                <a asp-route-id="@product.ProductID" asp-page="ProductSide">
+
+                        <img src="~/images/products/@product.PhotoPath" style="display:block; margin-left:auto; margin-right:auto; height:150px; padding-top: 15px" class="img-fluid" />
+                    
+                    <p class="text-center">@product.Title</p>
+                    <p class="text-center">@product.Color.ColorName</p>
+                    <p class="text-danger text-center">@product.Price sek</p>
+
+                </a>
+            </div>
+            }
+        </div>
+    </div>
+
+    </div>

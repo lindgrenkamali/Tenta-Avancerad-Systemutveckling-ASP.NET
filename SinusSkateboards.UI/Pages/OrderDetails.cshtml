@@ -1,0 +1,48 @@
+﻿@page
+@model SinusSkateboards.UI.Pages.OrderDetailsModel
+@{
+}
+
+
+<div class="h-100 row align-items-center">
+    <div class="col">
+        <h2>OrderID: @Model.Order.OrderID</h2>
+        
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order.Products[0].Product.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order.Products[0].Product.Title)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Order.Products[0].Product.Price)
+            </th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var product in Model.Order.Products)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => product.Product.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => product.Quantity)
+                </td>
+                <td>
+                    @(product.Product.Price* product.Quantity) sek
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
